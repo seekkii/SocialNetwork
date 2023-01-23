@@ -84,13 +84,6 @@ public class CommentHub : Hub<ICommentHub>
     public async Task ViewingComment(Guid commentId)
     {
         _logger.LogInformation($"Client {Context.ConnectionId} is viewing {commentId}");
-        await Groups.AddToGroupAsync(Context.ConnectionId, commentId.ToString());
-    }
-
-    public async Task LeavingComment(Guid commentId)
-    {
-        _logger.LogInformation($"Client {Context.ConnectionId} has left {commentId}");
-        await Groups.RemoveFromGroupAsync(Context.ConnectionId, commentId.ToString());
     }
     #endregion Methods
 }
